@@ -1,15 +1,15 @@
-# VulnX — Automated Web Vulnerability & Threat Intelligence Toolkit
+# WebX — Website Reconnaissance & Intelligence Toolkit
 
-VulnX is a modern web security analysis toolkit featuring a React + Vite frontend and a Python Flask backend API.
+WebX is a web reconnaissance and intelligence toolkit that collects useful information about a website from a single interface. It helps security researchers and cybersecurity enthusiasts gather information about a target website during the reconnaissance phase.
 
 ## Project Structure
 
-- `frontend/` – React + Vite user interface with tabbed cyber dashboard.
-- `backend/` – Python Flask API providing security audits, SSL inspection, DNS lookup, IP geolocation, tech fingerprinting, and multithreaded port scanning.
+* `frontend/` – React + Vite frontend providing the web-based dashboard.
+* `backend/` – Python Flask backend that performs website analysis and information gathering.
 
 ## Running the Project
 
-### 1. Start the Backend API (Python Flask)
+### 1. Start the Backend API
 
 ```powershell
 cd backend
@@ -19,9 +19,13 @@ pip install -r requirements.txt
 python app.py
 ```
 
-The API backend runs on `http://127.0.0.1:8000` by default.
+The backend runs on:
 
-### 2. Start the Frontend (React + Vite)
+```text
+http://127.0.0.1:8000
+```
+
+### 2. Start the Frontend
 
 ```powershell
 cd frontend
@@ -29,53 +33,42 @@ npm install
 npm run dev
 ```
 
-Then open the local Vite URL (e.g. `http://localhost:5173`) in your browser.
-
-## Configuration
-
-The frontend uses `VITE_API_URL` when present. If not set, it defaults to `http://127.0.0.1:8000`.
-
-Example `.env` inside `frontend/`:
-
-```env
-VITE_API_URL=http://127.0.0.1:8000
-```
+Then open the local Vite URL shown in the terminal.
 
 ## Key Features
 
-- 📊 **Executive Security Rating & Score**: Overall score (0-100) and letter grade (`A+` to `F`).
-- 🛡️ **Security Header Audit**: Evaluates CSP, HSTS, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, and Permissions-Policy.
-- 🌍 **IP Geolocation & Hosting Intelligence**: IP address, country, city, region, ISP, organization, and ASN.
-- ⚡ **Web Tech Stack Fingerprinting**: Detects web servers (Nginx, Apache, LiteSpeed), frameworks, and CDN/WAF protections (Cloudflare, AWS).
-- ⏱️ **HTTP Performance & Redirect Chain**: Response latency in ms and 301/302 redirect history tracing.
-- 📄 **Security Policy File Inspection**: Audits `robots.txt` and `/.well-known/security.txt` vulnerability policies.
-- 🔒 **SSL / TLS Certificate Inspector**: Certificate issuer, validity, protocol, cipher suites, days remaining timeline, and SANs.
-- 🌐 **DNS & Email Security (SPF / DMARC)**: Resolves A, AAAA, MX, TXT, NS records and validates SPF/DMARC anti-spoofing policies.
-- 🔌 **Multithreaded Port Scanner**: Concurrent probing of common service ports (FTP, SSH, SMTP, DNS, HTTP, HTTPS, MySQL, etc.).
-- 🎣 **Phishing Heuristics**: Domain entropy, HTTPS validation, IP obfuscation, and keyword threat analysis.
-- 🔍 **WHOIS Intelligence**: Registrar details, creation/expiry dates, IP resolution, and raw WHOIS output.
-- 🛠️ **Remediation Code Generator**: Copyable Nginx, Apache, and HTML Meta security hardening snippets.
-- 📥 **Audit Report Export**: 1-click JSON Audit Export and Print Audit Summary capabilities.
+* 🌐 **Website Information** – Collects important information related to a given website.
+* 🔍 **WHOIS Information** – Provides domain registration details such as registrar, creation date, and expiry date.
+* 🌍 **IP & Geolocation** – Finds the website's IP address, location, ISP, organization, and ASN information.
+* 🛠️ **Technology Detection** – Identifies technologies, web servers, frameworks, CDN/WAF services, and other technologies used by the website.
+* 🔐 **SSL/TLS Information** – Provides certificate details, issuer, validity, protocols, cipher information, and SANs.
+* 🌐 **DNS Information** – Retrieves DNS records including A, AAAA, MX, TXT, and NS records.
+* 📧 **Email Security** – Checks SPF and DMARC configurations.
+* 📋 **Security Headers** – Checks important HTTP security headers configured on the website.
+* 🔗 **Redirect Analysis** – Shows HTTP response time and redirect chains.
+* 📄 **Security Files** – Checks files such as `robots.txt` and `security.txt`.
+* 🔌 **Port Scanning** – Scans commonly used ports to identify potentially available services.
+* 🎣 **Phishing Analysis** – Performs basic heuristic checks for suspicious domain characteristics.
+* 📊 **Security Summary** – Provides a summarized view of the collected website information.
+* 📥 **Report Export** – Allows the collected information to be exported for further analysis.
 
-## 📡 API Endpoints
+## Purpose
 
-| Method | Endpoint | Description |
-|---|---|---|
-| `POST` | `/scan/full` | Unified Fast Parallel Audit (Headers, SSL, DNS, Geo, Tech Stack, Ports, WHOIS, Remediation) |
-| `POST` | `/scan/headers` | Security Header Audit |
-| `POST` | `/scan/ssl` | SSL / TLS Certificate Analysis |
-| `POST` | `/scan/dns` | DNS Records & Email Security (SPF/DMARC) |
-| `POST` | `/scan/geo` | IP Geolocation & Server Infrastructure |
-| `POST` | `/scan/phishing` | Phishing Threat Heuristics |
-| `POST` | `/scan/ports` | Concurrent Port Scanner |
-| `POST` | `/scan/domain` | WHOIS Domain Intelligence |
-| `POST` | `/scan/summary` | Executive AI Security Summary |
+WebX is mainly designed for the **reconnaissance phase of cybersecurity**. Instead of manually collecting information from different tools and sources, WebX brings commonly useful website intelligence into one place.
+
+The collected information can help security researchers understand a website's infrastructure, technologies, DNS configuration, security settings, and publicly available domain information before performing further security analysis.
+
+## Technology Stack
+
+* **Frontend:** React.js, Vite
+* **Backend:** Python, Flask
+* **Security & Reconnaissance:** WHOIS, DNS, SSL/TLS analysis, port scanning, technology fingerprinting
 
 ## 👨‍💻 Author
 
-**Prasad Nalla**  
+**Prasad Nalla**
 *Cybersecurity Enthusiast & Full-Stack Developer*
 
 ## 📄 License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the MIT License.
